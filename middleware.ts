@@ -15,9 +15,9 @@ export function middleware (request: NextRequest){
     if(request.nextUrl.pathname.startsWith('/information')){
         const user = {
             name: 'Lainer',
-            autheticated: false
+            autheticated: process.env.NEXT_PUBLIC_AUTHENTICATED
         }
-        if(!user.autheticated){
+        if(user.autheticated !== "true"){
             return NextResponse.redirect(new URL("/login", request.url))
         }
       
